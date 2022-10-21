@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+      <title>Vovka Morkovkin - dig</title>
+        <link>https://vova.im</link>
+        <description></description>
+        <generator>Zola</generator>
+        <language>ru</language>
+        <atom:link href="https://vova.im/tags/dig/rss.xml" rel="self" type="application/rss+xml"/>
+        <lastBuildDate>Wed, 24 Nov 2021 00:00:00 +0000</lastBuildDate>
+        <item>
+            <title>Postfix vs &quot;Helo command rejected: Host not found&quot;</title>
+            <pubDate>Wed, 24 Nov 2021 00:00:00 +0000</pubDate>
+            <link>https://vova.im/linux/21/11/24/postfix-vs-crooked-hands/</link>
+            <guid>https://vova.im/linux/21/11/24/postfix-vs-crooked-hands/</guid>
+            <description>&lt;p&gt;Иногда бывает так:&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;&quot;&gt;
+&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;$ cat mail.log
+Nov 24 05:34:51 mx postfix&#x2F;smtpd[6322]: NOQUEUE: reject: RCPT from unknown[1.2.3.4]: 450 4.7.1 &amp;lt;mail.supa-trupa-bonus.ru&amp;gt;: Helo command rejected: Host not found; from=&amp;lt;no-reply@supa-trupa-bonus.ru&amp;gt; to=&amp;lt;hello@wor.ld&amp;gt; proto=ESMTP helo=&amp;lt;mail.supa-trupa-bonus.ru&amp;gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;&lt;pre style=&quot;background-color:#2b303b;&quot;&gt;
+&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;$ dig -x  1.2.3.4 +short
+mail.supa-trupa-bonus.ru.
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;&lt;pre style=&quot;background-color:#2b303b;&quot;&gt;
+&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;$ dig supa-trupa-bonus.ru ns +short
+ns1.supa-trupa-ns.ru.
+ns2.supa-trupa-ns.ru.
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;&lt;pre style=&quot;background-color:#2b303b;&quot;&gt;
+&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;$ dig mail.supa-trupa-bonus.ru a mail.supa-trupa-bonus.ru cname +short @ns1.supa-trupa-ns.ru.
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Для получения писем от подобных &lt;span class=&quot;red15&quot;&gt;☝&lt;&#x2F;span&gt;️ отправителей в качестве временного решения может быть отключение &lt;code&gt;reject_unknown_helo_hostname&lt;&#x2F;code&gt; в параметре &lt;code&gt;smtpd_helo_restrictions&lt;&#x2F;code&gt; основного (&lt;code&gt;main.cf&lt;&#x2F;code&gt;) конфига postfix.&lt;&#x2F;p&gt;
+</description>
+        </item>
+    </channel>
+</rss>

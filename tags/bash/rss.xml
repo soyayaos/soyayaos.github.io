@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+      <title>Vovka Morkovkin - bash</title>
+        <link>https://vova.im</link>
+        <description></description>
+        <generator>Zola</generator>
+        <language>ru</language>
+        <atom:link href="https://vova.im/tags/bash/rss.xml" rel="self" type="application/rss+xml"/>
+        <lastBuildDate>Wed, 24 Nov 2021 00:00:00 +0000</lastBuildDate>
+        <item>
+            <title>Обёртка для wrk</title>
+            <pubDate>Wed, 24 Nov 2021 00:00:00 +0000</pubDate>
+            <link>https://vova.im/linux/21/11/24/wrk-wrapper/</link>
+            <guid>https://vova.im/linux/21/11/24/wrk-wrapper/</guid>
+            <description>&lt;pre style=&quot;background-color:#2b303b;&quot;&gt;
+&lt;code&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;#!&#x2F;bin&#x2F;bash
+
+COUNT=0
+
+for I in {1..5}; do
+  MSG=$(wrk -c 4096 -d 10 -t 12 http:&#x2F;&#x2F;127.0.0.1:21000&#x2F;)
+  RPS=$(echo &amp;quot;$(echo &amp;quot;$MSG&amp;quot; | grep &amp;#39;Requests&#x2F;sec&amp;#39; | tr -dc &amp;#39;.0-9&amp;#39;)&#x2F;1&amp;quot; | bc)
+  echo &amp;quot;step $I rps $RPS&amp;quot;
+  COUNT=$(($COUNT+$RPS))
+done
+
+COUNT=$(($COUNT&#x2F;5))
+echo
+echo &amp;quot;av $COUNT&amp;quot;
+echo
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;</description>
+        </item>
+    </channel>
+</rss>

@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+      <title>Vovka Morkovkin - starlight</title>
+        <link>https://vova.im</link>
+        <description></description>
+        <generator>Zola</generator>
+        <language>ru</language>
+        <atom:link href="https://vova.im/tags/starlight/rss.xml" rel="self" type="application/rss+xml"/>
+        <lastBuildDate>Tue, 23 Nov 2021 00:00:00 +0000</lastBuildDate>
+        <item>
+            <title>Производительность чтения по ключу в just, node и starlight</title>
+            <pubDate>Tue, 23 Nov 2021 00:00:00 +0000</pubDate>
+            <link>https://vova.im/js/21/11/23/just-node-and-starlight-kv-performance/</link>
+            <guid>https://vova.im/js/21/11/23/just-node-and-starlight-kv-performance/</guid>
+            <description>&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;engine&lt;&#x2F;th&gt;&lt;th&gt;Object&lt;&#x2F;th&gt;&lt;th&gt;Array&lt;&#x2F;th&gt;&lt;th&gt;Array with kv&lt;&#x2F;th&gt;&lt;th&gt;Map&lt;&#x2F;th&gt;&lt;&#x2F;tr&gt;&lt;&#x2F;thead&gt;&lt;tbody&gt;
+&lt;tr&gt;&lt;td&gt;&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;just-js&#x2F;just&quot;&gt;just&lt;&#x2F;a&gt; 0.1.5 v8 9.1.269.39&lt;&#x2F;td&gt;&lt;td&gt;8574888&lt;&#x2F;td&gt;&lt;td&gt;8398049&lt;&#x2F;td&gt;&lt;td&gt;8391783&lt;&#x2F;td&gt;&lt;td&gt;7848636&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;nodejs&#x2F;node&quot;&gt;node&lt;&#x2F;a&gt; 16.3.0 v8 9.0.257.25-node.16&lt;&#x2F;td&gt;&lt;td&gt;10474212 (+22%)&lt;&#x2F;td&gt;&lt;td&gt;10359501 (+23%)&lt;&#x2F;td&gt;&lt;td&gt;10270786 (+22%)&lt;&#x2F;td&gt;&lt;td&gt;9679039 (+23%)&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;nodejs&#x2F;node&quot;&gt;node&lt;&#x2F;a&gt; 17.1.0 v8 9.5.172.25-node.13&lt;&#x2F;td&gt;&lt;td&gt;10866964 (+26%)&lt;&#x2F;td&gt;&lt;td&gt;9338723 (+11%)&lt;&#x2F;td&gt;&lt;td&gt;10670077 (+27%)&lt;&#x2F;td&gt;&lt;td&gt;8728738 (+11%)&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;Starlight-JS&#x2F;starlight&quot;&gt;starlight&lt;&#x2F;a&gt; 0.1.0&lt;&#x2F;td&gt;&lt;td&gt;1031608 (-87%)&lt;&#x2F;td&gt;&lt;td&gt;1019201 (-87%)&lt;&#x2F;td&gt;&lt;td&gt;986503 (-88%)&lt;&#x2F;td&gt;&lt;td&gt;0&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;&#x2F;tbody&gt;&lt;&#x2F;table&gt;
+&lt;p&gt;&lt;a href=&quot;&#x2F;st&#x2F;21&#x2F;11&#x2F;23&#x2F;just-node-and-starlight-kv-performance&#x2F;test.js&quot;&gt;test.js&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a href=&quot;&#x2F;st&#x2F;21&#x2F;11&#x2F;23&#x2F;just-node-and-starlight-kv-performance&#x2F;test_starlight.js&quot;&gt;test_starlight.js&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;&quot;&gt;
+&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;$ just eval &amp;#39;just.print(just.version.just)&amp;#39;
+0.1.5
+$ just eval &amp;#39;just.print(just.version.v8)&amp;#39;
+9.1.269.39
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;&lt;pre style=&quot;background-color:#2b303b;&quot;&gt;
+&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;$ just test.js 
+
+[Object] = 8524750 op&#x2F;s
+[Array] = 8304747 op&#x2F;s
+[Array with kv] = 8311605 op&#x2F;s
+[Map] = 7787403 op&#x2F;s
+[Object] = 8467521 op&#x2F;s
+[Array] = 8346380 op&#x2F;s
+[Array with kv] = 8346833 op&#x2F;s
+[Map] = 7834026 op&#x2F;s
+[Object] = 8579031 op&#x2F;s
+[Array] = 8417042 op&#x2F;s
+[Array with kv] = 8441444 op&#x2F;s
+[Map] = 7892615 op&#x2F;s
+[Object] = 8653843 op&#x2F;s
+[Array] = 8467902 op&#x2F;s
+[Array with kv] = 8438021 op&#x2F;s
+[Map] = 7867841 op&#x2F;s
+[Object] = 8649296 op&#x2F;s
+[Array] = 8454172 op&#x2F;s
+[Array with kv] = 8421012 op&#x2F;s
+[Map] = 7861295 op&#x2F;s
+
+Object total = 42874441 av = 8574888
+Array total = 41990243 av = 8398049
+ArrayKv total = 41958915 av = 8391783
+Map total = 39243180 av = 7848636
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;&lt;pre style=&quot;background-color:#2b303b;&quot;&gt;
+&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;$ node --version
+v16.3.0
+$ node -e &amp;#39;console.log(process.versions.v8)&amp;#39;
+9.0.257.25-node.16
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;&lt;pre style=&quot;background-color:#2b303b;&quot;&gt;
+&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;$ node test.js 
+
+[Object] = 10515399 op&#x2F;s
+[Array] = 10343354 op&#x2F;s
+[Array with kv] = 10296610 op&#x2F;s
+[Map] = 9636133 op&#x2F;s
+[Object] = 10390081 op&#x2F;s
+[Array] = 10362915 op&#x2F;s
+[Array with kv] = 10308570 op&#x2F;s
+[Map] = 9697692 op&#x2F;s
+[Object] = 10452745 op&#x2F;s
+[Array] = 10412244 op&#x2F;s
+[Array with kv] = 10294890 op&#x2F;s
+[Map] = 9712242 op&#x2F;s
+[Object] = 10520457 op&#x2F;s
+[Array] = 10337067 op&#x2F;s
+[Array with kv] = 10168921 op&#x2F;s
+[Map] = 9657972 op&#x2F;s
+[Object] = 10492378 op&#x2F;s
+[Array] = 10341925 op&#x2F;s
+[Array with kv] = 10284940 op&#x2F;s
+[Map] = 9691155 op&#x2F;s
+
+Object  total = 52371060  av = 10474212
+Array  total = 51797505  av = 10359501
+ArrayKv  total = 51353931  av = 10270786
+Map  total = 48395194  av = 9679039
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;&lt;pre style=&quot;background-color:#2b303b;&quot;&gt;
+&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;$ ~&#x2F;.local&#x2F;bin&#x2F;node17&#x2F;bin&#x2F;node --version
+v17.1.0
+$ ~&#x2F;.local&#x2F;bin&#x2F;node17&#x2F;bin&#x2F;node -e &amp;#39;console.log(process.versions.v8)&amp;#39;
+9.5.172.25-node.13
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;&lt;pre style=&quot;background-color:#2b303b;&quot;&gt;
+&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;$ ~&#x2F;.local&#x2F;bin&#x2F;node17&#x2F;bin&#x2F;node test.js 
+
+[Object] = 10836594 op&#x2F;s
+[Array] = 10729531 op&#x2F;s
+[Array with kv] = 10719997 op&#x2F;s
+[Map] = 9912824 op&#x2F;s
+[Object] = 10958226 op&#x2F;s
+[Array] = 9628677 op&#x2F;s
+[Array with kv] = 10717017 op&#x2F;s
+[Map] = 9906378 op&#x2F;s
+[Object] = 10781364 op&#x2F;s
+[Array] = 10639124 op&#x2F;s
+[Array with kv] = 10677719 op&#x2F;s
+[Map] = 9637041 op&#x2F;s
+[Object] = 10888371 op&#x2F;s
+[Array] = 10787516 op&#x2F;s
+[Array with kv] = 10737150 op&#x2F;s
+[Map] = 9679569 op&#x2F;s
+[Object] = 10870265 op&#x2F;s
+[Array] = 4908765 op&#x2F;s
+[Array with kv] = 10498500 op&#x2F;s
+[Map] = 4507879 op&#x2F;s
+
+Object total = 54334820 av = 10866964
+Array total = 46693613 av = 9338723
+ArrayKv total = 53350383 av = 10670077
+Map total = 43643691 av = 8728738
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;&lt;pre style=&quot;background-color:#2b303b;&quot;&gt;
+&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;$ sl --version
+starlight 0.1.0
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;&lt;pre style=&quot;background-color:#2b303b;&quot;&gt;
+&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;$ sl test_starlight.js
+
+[Object] = 986221 op&#x2F;s
+[Array] = 1017309 op&#x2F;s
+[Array with kv] = 984326 op&#x2F;s
+[Object] = 1042491 op&#x2F;s
+[Array] = 1020672 op&#x2F;s
+[Array with kv] = 987822 op&#x2F;s
+[Object] = 1044176 op&#x2F;s
+[Array] = 1020621 op&#x2F;s
+[Array with kv] = 987755 op&#x2F;s
+[Object] = 1042983 op&#x2F;s
+[Array] = 1015716 op&#x2F;s
+[Array with kv] = 984356 op&#x2F;s
+[Object] = 1042171 op&#x2F;s
+[Array] = 1021686 op&#x2F;s
+[Array with kv] = 988256 op&#x2F;s
+
+Array total = 5096004 av = 1019201
+ArrayKv total = 4932515 av = 986503
+Object total = 5158042 av = 1031608
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;</description>
+        </item>
+    </channel>
+</rss>

@@ -1,1 +1,0 @@
-# soyayaos.github.io
