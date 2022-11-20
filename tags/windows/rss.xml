@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-      <title>Vovka Morkovkin - windows</title>
+      <title>Morkovkin&#x27;s notes - windows</title>
         <link>https://vova.im</link>
         <description></description>
         <generator>Zola</generator>
@@ -11,8 +11,8 @@
         <item>
             <title>Сборка Actix для Windows</title>
             <pubDate>Mon, 29 Nov 2021 00:00:00 +0000</pubDate>
-            <link>https://vova.im/rust/21/11/29/actix-in-windows/</link>
-            <guid>https://vova.im/rust/21/11/29/actix-in-windows/</guid>
+            <link>https://vova.im/linux/21/11/29/actix-in-windows/</link>
+            <guid>https://vova.im/linux/21/11/29/actix-in-windows/</guid>
             <description>&lt;pre style=&quot;background-color:#2b303b;&quot;&gt;
 &lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;$ rustc --version
 rustc 1.59.0-nightly (db9d361a4 2021-11-28)

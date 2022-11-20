@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+      <title>Morkovkin&#x27;s notes - postgresql</title>
+        <link>https://vova.im</link>
+        <description></description>
+        <generator>Zola</generator>
+        <language>ru</language>
+        <atom:link href="https://vova.im/categories/postgresql/rss.xml" rel="self" type="application/rss+xml"/>
+        <lastBuildDate>Sun, 20 Nov 2022 00:00:00 +0000</lastBuildDate>
+        <item>
+            <title>UUID vs BIGINT speed comparison in PostgreSQL</title>
+            <pubDate>Sun, 20 Nov 2022 00:00:00 +0000</pubDate>
+            <link>https://vova.im/postgresql/22/11/20/uuid-vs-bigint-speed-comparison/</link>
+            <guid>https://vova.im/postgresql/22/11/20/uuid-vs-bigint-speed-comparison/</guid>
+            <description>&lt;h2 id=&quot;percentage-result&quot;&gt;Percentage result&lt;&#x2F;h2&gt;
+&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;PG&lt;&#x2F;th&gt;&lt;th&gt;gen_random_uuid()&lt;&#x2F;th&gt;&lt;th&gt;uuid_generate_v1()&lt;&#x2F;th&gt;&lt;th&gt;uuid_generate_v4()&lt;&#x2F;th&gt;&lt;th&gt;nextval()&lt;&#x2F;th&gt;&lt;&#x2F;tr&gt;&lt;&#x2F;thead&gt;&lt;tbody&gt;
+&lt;tr&gt;&lt;td&gt;14.6&lt;&#x2F;td&gt;&lt;td&gt;100&lt;&#x2F;td&gt;&lt;td&gt;296&lt;&#x2F;td&gt;&lt;td&gt;212&lt;&#x2F;td&gt;&lt;td&gt;28&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;15.1&lt;&#x2F;td&gt;&lt;td&gt;89&lt;&#x2F;td&gt;&lt;td&gt;306&lt;&#x2F;td&gt;&lt;td&gt;207&lt;&#x2F;td&gt;&lt;td&gt;20&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;&#x2F;tbody&gt;&lt;&#x2F;table&gt;
+&lt;h2 id=&quot;pg-14-6&quot;&gt;PG 14.6&lt;&#x2F;h2&gt;
+&lt;pre style=&quot;background-color:#2b303b;&quot;&gt;
+&lt;code class=&quot;language-sql&quot; data-lang=&quot;sql&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;select&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt; version();
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;&lt;pre style=&quot;background-color:#2b303b;&quot;&gt;
+&lt;code&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;PostgreSQL 14.6 (Debian 14.6-1.pgdg110+1) on x86_64-pc-linux-gnu, compiled by gcc (Debian 10.2.1-6) 10.2.1 20210110, 64-bit
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;&lt;h2 id=&quot;pg-14-6-uuid-49206-630-ms-100&quot;&gt;PG 14.6 UUID: 49206.630 ms (100%)&lt;&#x2F;h2&gt;
+&lt;pre style=&quot;background-color:#2b303b;&quot;&gt;
+&lt;code class=&quot;language-sql&quot; data-lang=&quot;sql&quot;&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;explain analyse
+    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;select
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;        gen_random_uuid()
+    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;from
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;        generate_series(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;1&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;25000000&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;);
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;&lt;pre style=&quot;background-color:#2b303b;&quot;&gt;
+&lt;code&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;Function Scan on generate_series  (cost=0.00..312500.00 rows=25000000 width=16) (actual time=6071.724..48614.724 rows=25000000 loops=1)
+Planning Time: 0.026 ms
+JIT:
+  Functions: 3
+&amp;quot;  Options: Inlining false, Optimization false, Expressions true, Deforming true&amp;quot;
+&amp;quot;  Timing: Generation 0.306 ms, Inlining 0.000 ms, Optimization 0.132 ms, Emission 1.315 ms, Total 1.753 ms&amp;quot;
+Execution Time: 49206.630 ms
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;&lt;h2 id=&quot;pg-14-6-uuid-v1-with-uuid-ossp-145914-053-ms-296&quot;&gt;PG 14.6 UUID v1 with &lt;code&gt;uuid-ossp&lt;&#x2F;code&gt;: 145914.053 ms (296%)&lt;&#x2F;h2&gt;
+&lt;pre style=&quot;background-color:#2b303b;&quot;&gt;
+&lt;code class=&quot;language-sql&quot; data-lang=&quot;sql&quot;&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;create extension if not exists &amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;uuid-ossp&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;&amp;quot;;
+
+explain analyse
+    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;select
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;        uuid_generate_v1()
+    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;from
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;        generate_series(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;1&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;25000000&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;);
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;&lt;pre style=&quot;background-color:#2b303b;&quot;&gt;
+&lt;code&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;Function Scan on generate_series  (cost=0.00..312500.00 rows=25000000 width=16) (actual time=2879.300..145209.272 rows=25000000 loops=1)
+Planning Time: 0.023 ms
+JIT:
+  Functions: 3
+&amp;quot;  Options: Inlining false, Optimization false, Expressions true, Deforming true&amp;quot;
+&amp;quot;  Timing: Generation 0.292 ms, Inlining 0.000 ms, Optimization 0.109 ms, Emission 1.243 ms, Total 1.644 ms&amp;quot;
+Execution Time: 145914.053 ms
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;&lt;h2 id=&quot;pg-14-6-uuid-v4-with-uuid-ossp-104594-026-ms-212&quot;&gt;PG 14.6 UUID v4 with &lt;code&gt;uuid-ossp&lt;&#x2F;code&gt;: 104594.026 ms (212%)&lt;&#x2F;h2&gt;
+&lt;pre style=&quot;background-color:#2b303b;&quot;&gt;
+&lt;code class=&quot;language-sql&quot; data-lang=&quot;sql&quot;&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;create extension if not exists &amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;uuid-ossp&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;&amp;quot;;
+
+explain analyse
+    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;select
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;        uuid_generate_v4()
+    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;from
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;        generate_series(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;1&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;25000000&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;);
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;&lt;pre style=&quot;background-color:#2b303b;&quot;&gt;
+&lt;code&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;Function Scan on generate_series  (cost=0.00..312500.00 rows=25000000 width=16) (actual time=4414.126..103999.992 rows=25000000 loops=1)
+Planning Time: 0.019 ms
+JIT:
+  Functions: 3
+&amp;quot;  Options: Inlining false, Optimization false, Expressions true, Deforming true&amp;quot;
+&amp;quot;  Timing: Generation 0.286 ms, Inlining 0.000 ms, Optimization 0.082 ms, Emission 0.908 ms, Total 1.276 ms&amp;quot;
+Execution Time: 104594.026 ms
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;&lt;h2 id=&quot;pg-14-6-bigint-14186-833-ms-28&quot;&gt;PG 14.6 BIGINT: 14186.833 ms (28%)&lt;&#x2F;h2&gt;
+&lt;pre style=&quot;background-color:#2b303b;&quot;&gt;
+&lt;code class=&quot;language-sql&quot; data-lang=&quot;sql&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;drop sequence&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt; if exists demo;
+
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;create sequence &lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;demo as &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;bigint&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;;
+
+explain analyse
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;select
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;    nextval(&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;demo&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;&amp;#39;)
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;from
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;    generate_series(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;1&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;25000000&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;);
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;&lt;pre style=&quot;background-color:#2b303b;&quot;&gt;
+&lt;code&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;Function Scan on generate_series  (cost=0.00..312500.00 rows=25000000 width=8) (actual time=4573.023..13597.980 rows=25000000 loops=1)
+Planning Time: 0.036 ms
+JIT:
+  Functions: 3
+&amp;quot;  Options: Inlining false, Optimization false, Expressions true, Deforming true&amp;quot;
+&amp;quot;  Timing: Generation 0.369 ms, Inlining 0.000 ms, Optimization 0.126 ms, Emission 1.352 ms, Total 1.846 ms&amp;quot;
+Execution Time: 14186.833 ms
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;&lt;h2 id=&quot;pg-15-1&quot;&gt;PG 15.1&lt;&#x2F;h2&gt;
+&lt;pre style=&quot;background-color:#2b303b;&quot;&gt;
+&lt;code class=&quot;language-sql&quot; data-lang=&quot;sql&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;select&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt; version();
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;&lt;pre style=&quot;background-color:#2b303b;&quot;&gt;
+&lt;code&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;PostgreSQL 15.1 (Debian 15.1-1.pgdg110+1) on x86_64-pc-linux-gnu, compiled by gcc (Debian 10.2.1-6) 10.2.1 20210110, 64-bit
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;&lt;h2 id=&quot;pg-15-1-uuid-44215-709-ms-89&quot;&gt;PG 15.1 UUID: 44215.709 ms (89%)&lt;&#x2F;h2&gt;
+&lt;pre style=&quot;background-color:#2b303b;&quot;&gt;
+&lt;code class=&quot;language-sql&quot; data-lang=&quot;sql&quot;&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;explain analyse
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;select
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;    gen_random_uuid()
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;from
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;    generate_series(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;1&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;25000000&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;);
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;&lt;pre style=&quot;background-color:#2b303b;&quot;&gt;
+&lt;code&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;Function Scan on generate_series  (cost=0.00..312500.00 rows=25000000 width=16) (actual time=1597.800..43626.773 rows=25000000 loops=1)
+Planning Time: 0.035 ms
+JIT:
+  Functions: 3
+&amp;quot;  Options: Inlining false, Optimization false, Expressions true, Deforming true&amp;quot;
+&amp;quot;  Timing: Generation 0.380 ms, Inlining 0.000 ms, Optimization 0.151 ms, Emission 1.685 ms, Total 2.216 ms&amp;quot;
+Execution Time: 44215.709 ms
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;&lt;h2 id=&quot;pg-15-1-uuid-v1-with-uuid-ossp-150920-625-ms-306&quot;&gt;PG 15.1 UUID v1 with &lt;code&gt;uuid-ossp&lt;&#x2F;code&gt;: 150920.625 ms (306%)&lt;&#x2F;h2&gt;
+&lt;pre style=&quot;background-color:#2b303b;&quot;&gt;
+&lt;code class=&quot;language-sql&quot; data-lang=&quot;sql&quot;&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;create extension if not exists &amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;uuid-ossp&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;&amp;quot;;
+
+explain analyse
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;select
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;    uuid_generate_v1()
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;from
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;    generate_series(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;1&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;25000000&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;);
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;&lt;pre style=&quot;background-color:#2b303b;&quot;&gt;
+&lt;code&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;Function Scan on generate_series  (cost=0.00..312500.00 rows=25000000 width=16) (actual time=6338.731..150149.723 rows=25000000 loops=1)
+Planning Time: 0.018 ms
+JIT:
+  Functions: 3
+&amp;quot;  Options: Inlining false, Optimization false, Expressions true, Deforming true&amp;quot;
+&amp;quot;  Timing: Generation 0.174 ms, Inlining 0.000 ms, Optimization 0.069 ms, Emission 0.928 ms, Total 1.171 ms&amp;quot;
+Execution Time: 150920.625 ms
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;&lt;h2 id=&quot;pg-15-1-uuid-v4-with-uuid-ossp-102157-233-ms-207&quot;&gt;PG 15.1 UUID v4 with &lt;code&gt;uuid-ossp&lt;&#x2F;code&gt;: 102157.233 ms (207%)&lt;&#x2F;h2&gt;
+&lt;pre style=&quot;background-color:#2b303b;&quot;&gt;
+&lt;code class=&quot;language-sql&quot; data-lang=&quot;sql&quot;&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;create extension if not exists &amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;uuid-ossp&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;&amp;quot;;
+
+explain analyse
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;select
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;    uuid_generate_v4()
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;from
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;    generate_series(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;1&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;25000000&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;);
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;&lt;pre style=&quot;background-color:#2b303b;&quot;&gt;
+&lt;code&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;Function Scan on generate_series  (cost=0.00..312500.00 rows=25000000 width=16) (actual time=1598.845..101564.754 rows=25000000 loops=1)
+Planning Time: 0.028 ms
+JIT:
+  Functions: 3
+&amp;quot;  Options: Inlining false, Optimization false, Expressions true, Deforming true&amp;quot;
+&amp;quot;  Timing: Generation 0.276 ms, Inlining 0.000 ms, Optimization 0.114 ms, Emission 1.050 ms, Total 1.440 ms&amp;quot;
+Execution Time: 102157.233 ms
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;&lt;h2 id=&quot;pg-15-1-bigint-10010-054-ms-20&quot;&gt;PG 15.1 BIGINT: 10010.054 ms (20%)&lt;&#x2F;h2&gt;
+&lt;pre style=&quot;background-color:#2b303b;&quot;&gt;
+&lt;code class=&quot;language-sql&quot; data-lang=&quot;sql&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;drop sequence&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt; if exists demo;
+
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;create sequence &lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;demo as &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;bigint&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;;
+
+explain analyse
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;select
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;    nextval(&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;demo&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;&amp;#39;)
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;from
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;    generate_series(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;1&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;25000000&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;);
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;&lt;pre style=&quot;background-color:#2b303b;&quot;&gt;
+&lt;code&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt; Function Scan on generate_series  (cost=0.00..312500.00 rows=25000000 width=8) (actual time=1562.800..9332.415 rows=25000000 loops=1)
+ Planning Time: 0.122 ms
+ JIT:
+   Functions: 3
+   Options: Inlining false, Optimization false, Expressions true, Deforming true
+   Timing: Generation 0.176 ms, Inlining 0.000 ms, Optimization 0.108 ms, Emission 2.954 ms, Total 3.237 ms
+ Execution Time: 10010.054 ms
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;</description>
+        </item>
+    </channel>
+</rss>

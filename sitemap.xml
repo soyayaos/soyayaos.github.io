@@ -7,6 +7,12 @@
         <loc>https://vova.im/categories/</loc>
     </url>
     <url>
+        <loc>https://vova.im/categories/css/</loc>
+    </url>
+    <url>
+        <loc>https://vova.im/categories/css/page/1/</loc>
+    </url>
+    <url>
         <loc>https://vova.im/categories/js/</loc>
     </url>
     <url>
@@ -19,10 +25,14 @@
         <loc>https://vova.im/categories/linux/page/1/</loc>
     </url>
     <url>
-        <loc>https://vova.im/categories/rust/</loc>
+        <loc>https://vova.im/categories/postgresql/</loc>
     </url>
     <url>
-        <loc>https://vova.im/categories/rust/page/1/</loc>
+        <loc>https://vova.im/categories/postgresql/page/1/</loc>
+    </url>
+    <url>
+        <loc>https://vova.im/css/22/11/19/click-emulation-with-html-and-css/</loc>
+        <lastmod>2022-11-19</lastmod>
     </url>
     <url>
         <loc>https://vova.im/js/21/11/23/just-node-and-starlight-kv-performance/</loc>
@@ -41,6 +51,10 @@
         <lastmod>2021-11-24</lastmod>
     </url>
     <url>
+        <loc>https://vova.im/linux/21/11/29/actix-in-windows/</loc>
+        <lastmod>2021-11-29</lastmod>
+    </url>
+    <url>
         <loc>https://vova.im/linux/21/11/30/upx-magic/</loc>
         <lastmod>2021-11-30</lastmod>
     </url>
@@ -49,8 +63,8 @@
         <lastmod>2022-02-17</lastmod>
     </url>
     <url>
-        <loc>https://vova.im/rust/21/11/29/actix-in-windows/</loc>
-        <lastmod>2021-11-29</lastmod>
+        <loc>https://vova.im/postgresql/22/11/20/uuid-vs-bigint-speed-comparison/</loc>
+        <lastmod>2022-11-20</lastmod>
     </url>
     <url>
         <loc>https://vova.im/tags/</loc>
@@ -78,6 +92,12 @@
     </url>
     <url>
         <loc>https://vova.im/tags/express/page/1/</loc>
+    </url>
+    <url>
+        <loc>https://vova.im/tags/html/</loc>
+    </url>
+    <url>
+        <loc>https://vova.im/tags/html/page/1/</loc>
     </url>
     <url>
         <loc>https://vova.im/tags/just/</loc>
@@ -116,6 +136,12 @@
         <loc>https://vova.im/tags/recaptcha/page/1/</loc>
     </url>
     <url>
+        <loc>https://vova.im/tags/rust/</loc>
+    </url>
+    <url>
+        <loc>https://vova.im/tags/rust/page/1/</loc>
+    </url>
+    <url>
         <loc>https://vova.im/tags/starlight/</loc>
     </url>
     <url>
@@ -126,6 +152,12 @@
     </url>
     <url>
         <loc>https://vova.im/tags/upx/page/1/</loc>
+    </url>
+    <url>
+        <loc>https://vova.im/tags/uuid/</loc>
+    </url>
+    <url>
+        <loc>https://vova.im/tags/uuid/page/1/</loc>
     </url>
     <url>
         <loc>https://vova.im/tags/windows/</loc>
