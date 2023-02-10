@@ -7,7 +7,62 @@
         <generator>Zola</generator>
         <language>ru</language>
         <atom:link href="https://vova.im/categories/linux/rss.xml" rel="self" type="application/rss+xml"/>
-        <lastBuildDate>Thu, 17 Feb 2022 00:00:00 +0000</lastBuildDate>
+        <lastBuildDate>Fri, 10 Feb 2023 00:00:00 +0000</lastBuildDate>
+        <item>
+            <title>Processing CSV with csvkit</title>
+            <pubDate>Fri, 10 Feb 2023 00:00:00 +0000</pubDate>
+            <link>https://vova.im/linux/23/02/10/processing-csv-with-csvkit/</link>
+            <guid>https://vova.im/linux/23/02/10/processing-csv-with-csvkit/</guid>
+            <description>&lt;pre style=&quot;background-color:#2b303b;&quot;&gt;
+&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;$ cat data.csv 
+name,amount
+Linda,22
+Joe,10
+Jack,15
+Joe,12
+Linda,18
+Jack,19
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Get all Joe&#x27;s records:&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;&quot;&gt;
+&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;$ csvsql --query &amp;#39;select * from data where name=&amp;quot;Joe&amp;quot;&amp;#39; data.csv 
+name,amount
+Joe,10.0
+Joe,12.0
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Get amount of Joe&#x27;s records:&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;&quot;&gt;
+&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;$ csvsql --query &amp;#39;select name, sum(amount) as total from data where name=&amp;quot;Joe&amp;quot;&amp;#39; data.csv 
+name,total
+Joe,22.0
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Save user records to separate files:&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;&quot;&gt;
+&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;#!&#x2F;bin&#x2F;bash
+
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;RESULT&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;=`&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;csvsql --query &lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;select distinct name from data&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;&amp;quot; data.csv`
+
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;REALIFS&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;=$&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;IFS
+IFS&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;=$&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;\n&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;&amp;#39;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;USERS&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;=($&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;RESULT&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;)
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;IFS&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;=$&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;REALIFS
+
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;for&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt; IDX &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;in &lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;&amp;quot;$&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;{&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;!&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;USERS[@]&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;}&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;&amp;quot;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;do
+   &lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;:
+   &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;if &lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;[ &lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;$&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;IDX -gt&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt; 0 &lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;]&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;then
+    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;CURRENT_USER&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;=`&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;echo &lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;&amp;quot;$&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;{&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;USERS[&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;$&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;IDX]&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;}&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;&amp;quot; | &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;tr -d &lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;&amp;#39;`
+    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;if &lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;[ &lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;${#&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;CURRENT_USER&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;} &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;-gt&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt; 0 &lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;]&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;then
+      &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;FILENAME&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;=&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;`&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;echo &lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;&amp;quot;$&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;CURRENT_USER&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;&amp;quot; | &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;sed &lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;s&#x2F; &#x2F;_&#x2F;g; s&#x2F;|&#x2F;_&#x2F;g; s&#x2F;,&#x2F;_&#x2F;g&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;`.csv&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;&amp;quot;
+      &lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;echo &lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;Saving user [&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;$&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;CURRENT_USER&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;] data ...&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;&amp;quot;
+      &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;csvsql --query &lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;select * from data where name = &amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;$&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;{&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;CURRENT_USER&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;}&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;&amp;quot; data.csv &amp;gt; $&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;FILENAME
+    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;fi
+   fi
+done
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;vova.im&#x2F;go&#x2F;csvkit&quot;&gt;csvkit docs&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+</description>
+        </item>
         <item>
             <title>Проверка Google reCAPTCHA в Nginx с использованием njs</title>
             <pubDate>Thu, 17 Feb 2022 00:00:00 +0000</pubDate>
@@ -87,7 +142,7 @@ server {
 &amp;lt;&#x2F;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;body&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;&amp;gt;
 &amp;lt;&#x2F;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;html&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;&amp;gt;
 &lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
-&lt;p&gt;Аналогичную проверку куки можно делать без &lt;a href=&quot;https:&#x2F;&#x2F;nginx.org&#x2F;en&#x2F;docs&#x2F;njs&#x2F;&quot;&gt;njs&lt;&#x2F;a&gt; используя &lt;a href=&quot;http:&#x2F;&#x2F;nginx.org&#x2F;en&#x2F;docs&#x2F;http&#x2F;ngx_http_map_module.html&quot;&gt;map&lt;&#x2F;a&gt;, однако использование njs позволяет реализовать решение в более гибком виде.&lt;&#x2F;p&gt;
+&lt;p&gt;Аналогичную проверку куки можно делать без &lt;a href=&quot;https:&#x2F;&#x2F;vova.im&#x2F;go&#x2F;njs&quot;&gt;njs&lt;&#x2F;a&gt; используя &lt;a href=&quot;https:&#x2F;&#x2F;vova.im&#x2F;go&#x2F;nginx-map&quot;&gt;map&lt;&#x2F;a&gt;, однако использование njs позволяет реализовать решение в более гибком виде.&lt;&#x2F;p&gt;
 </description>
         </item>
         <item>
@@ -147,7 +202,7 @@ target&#x2F;release&#x2F;hello-world-min: ELF 64-bit LSB pie executable, x86-64,
 &lt;blockquote&gt;
 &lt;ul&gt;
 &lt;li&gt;Используются дефолтные значения &lt;code&gt;[profile.release]&lt;&#x2F;code&gt;&lt;&#x2F;li&gt;
-&lt;li&gt;Репозиторий &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;upx&#x2F;upx&quot;&gt;upx&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;Репозиторий &lt;a href=&quot;https:&#x2F;&#x2F;vova.im&#x2F;go&#x2F;upx&quot;&gt;upx&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
 &lt;&#x2F;ul&gt;
 &lt;&#x2F;blockquote&gt;
 </description>

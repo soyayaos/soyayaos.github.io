@@ -34,8 +34,8 @@
 
   <title>
     
-    Morkovkin&#x27;s notes
-    
+Morkovkin&#x27;s notes | Processing CSV with csvkit
+
   </title>
 
 <!--  <script crossorigin="anonymous" src="https://kit.fontawesome.com/201b8d5e05.js"></script>-->
@@ -107,35 +107,17 @@
   
 
   
-<header class='hero'>
-  <div class='hero-body pb-0'>
-    <div class='container'>
-      <div class='has-text-centered'>
-        <h1 class="title is-1">
-          <span class="icon"><i class="fas fa-tag"></i></span> bash
-        </h1>
-      </div>
-    </div>
-  </div>
-</header>
-
+  
 
   
 <section class="section">
   <div class="container">
-    <div class="columns is-centered">
-      <div class="column is-9">
-        
-        
-        
-
-        
+    <div class="columns">
+      <div class="column is-10 is-offset-1">
         <article class="box">
-          <h2 class="title">
-            <a class="link" class="link" href='https:&#x2F;&#x2F;vova.im&#x2F;linux&#x2F;23&#x2F;02&#x2F;10&#x2F;processing-csv-with-csvkit&#x2F;'>
-              Processing CSV with csvkit
-            </a>
-          </h2>
+          <h1 class="title is-1">
+            Processing CSV with csvkit
+          </h1>
           <p class="subtitle"></p>
           <div class="columns is-multiline is-gapless">
             <div class="column is-8">
@@ -168,17 +150,6 @@
 <!--  </p>-->
 
             </div>
-          </div>
-          <div class="content mt-2">
-            
-            <a class="read-more" href='https:&#x2F;&#x2F;vova.im&#x2F;linux&#x2F;23&#x2F;02&#x2F;10&#x2F;processing-csv-with-csvkit&#x2F;'>
-              читать целиком
-              <span class="icon is-small">
-                <i class="fas fa-arrow-right fa-xs"></i>
-              </span>
-            </a>
-          </div>
-          <div class="columns">
             <div class="column">
               
               
@@ -221,102 +192,60 @@
               
             </div>
           </div>
-        </article>
-        
-        <article class="box">
-          <h2 class="title">
-            <a class="link" class="link" href='https:&#x2F;&#x2F;vova.im&#x2F;linux&#x2F;21&#x2F;11&#x2F;24&#x2F;wrk-wrapper&#x2F;'>
-              Обёртка для wrk
-            </a>
-          </h2>
-          <p class="subtitle"></p>
-          <div class="columns is-multiline is-gapless">
-            <div class="column is-8">
-              
-  <p class="has-text-grey">
-<!--    <span class="icon">-->
-<!--      <i class="fas fa-user"></i>-->
-<!--    </span>-->
-<!--    Vovka Morkovkin -->
-    опубликовано
-    <span class="icon">
-      <i class="far fa-calendar-alt"></i>
-    </span>
-<!--    %B %d, %Y-->
-    <time datetime='2021-11-24'>2021-11-24</time>
-  </p>
-
-            </div>
-            <div class="column is-4 has-text-right-desktop">
-              
-<!--  <p class="has-text-grey">-->
-<!--    <span class="icon">-->
-<!--      <i class="far fa-clock"></i>-->
-<!--    </span>-->
-<!--    1 min,-->
-<!--    <span class="icon">-->
-<!--      <i class="fas fa-pencil-alt"></i>-->
-<!--    </span>-->
-<!--    51 words-->
-<!--  </p>-->
-
-            </div>
-          </div>
           <div class="content mt-2">
-            
-            <a class="read-more" href='https:&#x2F;&#x2F;vova.im&#x2F;linux&#x2F;21&#x2F;11&#x2F;24&#x2F;wrk-wrapper&#x2F;'>
-              читать целиком
-              <span class="icon is-small">
-                <i class="fas fa-arrow-right fa-xs"></i>
-              </span>
-            </a>
-          </div>
-          <div class="columns">
-            <div class="column">
-              
-              
-<!--  <p>-->
-<!--    <span class="has-text-black has-text-weight-normal">Разделы:</span>-->
-<!--    -->
-<!--      <a class="link has-text-weight-light" href='https:&#x2F;&#x2F;vova.im&#x2F;categories&#x2F;linux&#x2F;'>-->
-<!--        <span class="icon is-small">-->
-<!--          <i class="fas fa-folder fa-xs"></i>-->
-<!--        </span>-->
-<!--        linux-->
-<!--      </a>-->
-<!--    -->
-<!--  </p>-->
+            <pre style="background-color:#2b303b;">
+<code class="language-shell" data-lang="shell"><span style="color:#c0c5ce;">$ cat data.csv 
+name,amount
+Linda,22
+Joe,10
+Jack,15
+Joe,12
+Linda,18
+Jack,19
+</span></code></pre>
+<p>Get all Joe's records:</p>
+<pre style="background-color:#2b303b;">
+<code class="language-shell" data-lang="shell"><span style="color:#c0c5ce;">$ csvsql --query &#39;select * from data where name=&quot;Joe&quot;&#39; data.csv 
+name,amount
+Joe,10.0
+Joe,12.0
+</span></code></pre>
+<p>Get amount of Joe's records:</p>
+<pre style="background-color:#2b303b;">
+<code class="language-shell" data-lang="shell"><span style="color:#c0c5ce;">$ csvsql --query &#39;select name, sum(amount) as total from data where name=&quot;Joe&quot;&#39; data.csv 
+name,total
+Joe,22.0
+</span></code></pre>
+<p>Save user records to separate files:</p>
+<pre style="background-color:#2b303b;">
+<code class="language-bash" data-lang="bash"><span style="color:#65737e;">#!/bin/bash
 
-              
-            </div>
-            <div class="column has-text-right-desktop">
-              
-              
-  <p>
-    <span class="has-text-black has-text-weight-normal">Тэги:</span>
-    
-      <a class="link has-text-weight-light" href='https:&#x2F;&#x2F;vova.im&#x2F;tags&#x2F;wrk&#x2F;'>
-        <span class="icon is-small">
-          <i class="fas fa-tag fa-xs"></i>
-        </span>
-        wrk
-      </a>
-    
-      <a class="link has-text-weight-light" href='https:&#x2F;&#x2F;vova.im&#x2F;tags&#x2F;bash&#x2F;'>
-        <span class="icon is-small">
-          <i class="fas fa-tag fa-xs"></i>
-        </span>
-        bash
-      </a>
-    
-  </p>
+</span><span style="color:#bf616a;">RESULT</span><span style="color:#c0c5ce;">=`</span><span style="color:#bf616a;">csvsql --query </span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">select distinct name from data</span><span style="color:#c0c5ce;">&quot; data.csv`
 
-              
-            </div>
+</span><span style="color:#bf616a;">REALIFS</span><span style="color:#c0c5ce;">=$</span><span style="color:#bf616a;">IFS
+IFS</span><span style="color:#c0c5ce;">=$&#39;</span><span style="color:#96b5b4;">\n</span><span style="color:#c0c5ce;">&#39;
+</span><span style="color:#bf616a;">USERS</span><span style="color:#c0c5ce;">=($</span><span style="color:#bf616a;">RESULT</span><span style="color:#c0c5ce;">)
+</span><span style="color:#bf616a;">IFS</span><span style="color:#c0c5ce;">=$</span><span style="color:#bf616a;">REALIFS
+
+</span><span style="color:#b48ead;">for</span><span style="color:#c0c5ce;"> IDX </span><span style="color:#b48ead;">in </span><span style="color:#c0c5ce;">&quot;$</span><span style="color:#a3be8c;">{</span><span style="color:#c0c5ce;">!</span><span style="color:#bf616a;">USERS[@]</span><span style="color:#a3be8c;">}</span><span style="color:#c0c5ce;">&quot;
+</span><span style="color:#b48ead;">do
+   </span><span style="color:#96b5b4;">:
+   </span><span style="color:#b48ead;">if </span><span style="color:#96b5b4;">[ </span><span style="color:#c0c5ce;">$</span><span style="color:#bf616a;">IDX -gt</span><span style="color:#c0c5ce;"> 0 </span><span style="color:#96b5b4;">]</span><span style="color:#c0c5ce;">; </span><span style="color:#b48ead;">then
+    </span><span style="color:#bf616a;">CURRENT_USER</span><span style="color:#c0c5ce;">=`</span><span style="color:#96b5b4;">echo </span><span style="color:#c0c5ce;">&quot;$</span><span style="color:#a3be8c;">{</span><span style="color:#bf616a;">USERS[</span><span style="color:#c0c5ce;">$</span><span style="color:#bf616a;">IDX]</span><span style="color:#a3be8c;">}</span><span style="color:#c0c5ce;">&quot; | </span><span style="color:#bf616a;">tr -d </span><span style="color:#c0c5ce;">&#39;</span><span style="color:#a3be8c;">&quot;</span><span style="color:#c0c5ce;">&#39;`
+    </span><span style="color:#b48ead;">if </span><span style="color:#96b5b4;">[ </span><span style="color:#c0c5ce;">${#</span><span style="color:#bf616a;">CURRENT_USER</span><span style="color:#c0c5ce;">} </span><span style="color:#bf616a;">-gt</span><span style="color:#c0c5ce;"> 0 </span><span style="color:#96b5b4;">]</span><span style="color:#c0c5ce;">; </span><span style="color:#b48ead;">then
+      </span><span style="color:#bf616a;">FILENAME</span><span style="color:#c0c5ce;">=&quot;</span><span style="color:#a3be8c;">`</span><span style="color:#96b5b4;">echo </span><span style="color:#c0c5ce;">&quot;$</span><span style="color:#bf616a;">CURRENT_USER</span><span style="color:#c0c5ce;">&quot; | </span><span style="color:#bf616a;">sed </span><span style="color:#c0c5ce;">&#39;</span><span style="color:#a3be8c;">s/ /_/g; s/|/_/g; s/,/_/g</span><span style="color:#c0c5ce;">&#39;</span><span style="color:#a3be8c;">`.csv</span><span style="color:#c0c5ce;">&quot;
+      </span><span style="color:#96b5b4;">echo </span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">Saving user [</span><span style="color:#c0c5ce;">$</span><span style="color:#bf616a;">CURRENT_USER</span><span style="color:#a3be8c;">] data ...</span><span style="color:#c0c5ce;">&quot;
+      </span><span style="color:#bf616a;">csvsql --query </span><span style="color:#c0c5ce;">&quot;</span><span style="color:#a3be8c;">select * from data where name = &#39;</span><span style="color:#c0c5ce;">$</span><span style="color:#a3be8c;">{</span><span style="color:#bf616a;">CURRENT_USER</span><span style="color:#a3be8c;">}&#39;</span><span style="color:#c0c5ce;">&quot; data.csv &gt; $</span><span style="color:#bf616a;">FILENAME
+    </span><span style="color:#b48ead;">fi
+   fi
+done
+</span></code></pre>
+<p><a href="https://vova.im/go/csvkit">csvkit docs</a></p>
+
           </div>
         </article>
-        
       </div>
+      
     </div>
   </div>
 </section>
@@ -344,11 +273,12 @@
 
 
   
-  
-  
+
+
 
   
-  
+
+
 
   
   <footer class="py-4 has-background-light">
@@ -383,7 +313,10 @@
   <script src="/js/site.js"></script>
 
   
-  
+
+
+
+
 </body>
 
 </html>

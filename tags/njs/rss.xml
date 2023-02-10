@@ -87,7 +87,7 @@ server {
 &amp;lt;&#x2F;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;body&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;&amp;gt;
 &amp;lt;&#x2F;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;html&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;&amp;gt;
 &lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
-&lt;p&gt;Аналогичную проверку куки можно делать без &lt;a href=&quot;https:&#x2F;&#x2F;nginx.org&#x2F;en&#x2F;docs&#x2F;njs&#x2F;&quot;&gt;njs&lt;&#x2F;a&gt; используя &lt;a href=&quot;http:&#x2F;&#x2F;nginx.org&#x2F;en&#x2F;docs&#x2F;http&#x2F;ngx_http_map_module.html&quot;&gt;map&lt;&#x2F;a&gt;, однако использование njs позволяет реализовать решение в более гибком виде.&lt;&#x2F;p&gt;
+&lt;p&gt;Аналогичную проверку куки можно делать без &lt;a href=&quot;https:&#x2F;&#x2F;vova.im&#x2F;go&#x2F;njs&quot;&gt;njs&lt;&#x2F;a&gt; используя &lt;a href=&quot;https:&#x2F;&#x2F;vova.im&#x2F;go&#x2F;nginx-map&quot;&gt;map&lt;&#x2F;a&gt;, однако использование njs позволяет реализовать решение в более гибком виде.&lt;&#x2F;p&gt;
 </description>
         </item>
     </channel>

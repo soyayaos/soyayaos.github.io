@@ -33,8 +33,8 @@
 &lt;&#x2F;ul&gt;
 &lt;h3 id=&quot;metody-express-js&quot;&gt;Методы express.js&lt;&#x2F;h3&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;http:&#x2F;&#x2F;expressjs.com&#x2F;en&#x2F;api.html#res.end&quot;&gt;.end()&lt;&#x2F;a&gt; - завершает обработку запроса&lt;&#x2F;li&gt;
-&lt;li&gt;&lt;a href=&quot;http:&#x2F;&#x2F;expressjs.com&#x2F;en&#x2F;api.html#res.send&quot;&gt;.send()&lt;&#x2F;a&gt; - добавляет данные в ответ&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;vova.im&#x2F;go&#x2F;express-end&quot;&gt;.end()&lt;&#x2F;a&gt; - завершает обработку запроса&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;vova.im&#x2F;go&#x2F;express-send&quot;&gt;.send()&lt;&#x2F;a&gt; - добавляет данные в ответ&lt;&#x2F;li&gt;
 &lt;&#x2F;ul&gt;
 &lt;h3 id=&quot;otpravliaemye-zagolovki-dlia-end-i-send&quot;&gt;Отправляемые заголовки для end() и send()&lt;&#x2F;h3&gt;
 &lt;ul&gt;
@@ -98,10 +98,10 @@ Keep-Alive: timeout=5
             <link>https://vova.im/js/21/11/23/just-node-and-starlight-kv-performance/</link>
             <guid>https://vova.im/js/21/11/23/just-node-and-starlight-kv-performance/</guid>
             <description>&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;engine&lt;&#x2F;th&gt;&lt;th&gt;Object&lt;&#x2F;th&gt;&lt;th&gt;Array&lt;&#x2F;th&gt;&lt;th&gt;Array with kv&lt;&#x2F;th&gt;&lt;th&gt;Map&lt;&#x2F;th&gt;&lt;&#x2F;tr&gt;&lt;&#x2F;thead&gt;&lt;tbody&gt;
-&lt;tr&gt;&lt;td&gt;&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;just-js&#x2F;just&quot;&gt;just&lt;&#x2F;a&gt; 0.1.5 v8 9.1.269.39&lt;&#x2F;td&gt;&lt;td&gt;8574888&lt;&#x2F;td&gt;&lt;td&gt;8398049&lt;&#x2F;td&gt;&lt;td&gt;8391783&lt;&#x2F;td&gt;&lt;td&gt;7848636&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
-&lt;tr&gt;&lt;td&gt;&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;nodejs&#x2F;node&quot;&gt;node&lt;&#x2F;a&gt; 16.3.0 v8 9.0.257.25-node.16&lt;&#x2F;td&gt;&lt;td&gt;10474212 (+22%)&lt;&#x2F;td&gt;&lt;td&gt;10359501 (+23%)&lt;&#x2F;td&gt;&lt;td&gt;10270786 (+22%)&lt;&#x2F;td&gt;&lt;td&gt;9679039 (+23%)&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
-&lt;tr&gt;&lt;td&gt;&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;nodejs&#x2F;node&quot;&gt;node&lt;&#x2F;a&gt; 17.1.0 v8 9.5.172.25-node.13&lt;&#x2F;td&gt;&lt;td&gt;10866964 (+26%)&lt;&#x2F;td&gt;&lt;td&gt;9338723 (+11%)&lt;&#x2F;td&gt;&lt;td&gt;10670077 (+27%)&lt;&#x2F;td&gt;&lt;td&gt;8728738 (+11%)&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
-&lt;tr&gt;&lt;td&gt;&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;Starlight-JS&#x2F;starlight&quot;&gt;starlight&lt;&#x2F;a&gt; 0.1.0&lt;&#x2F;td&gt;&lt;td&gt;1031608 (-87%)&lt;&#x2F;td&gt;&lt;td&gt;1019201 (-87%)&lt;&#x2F;td&gt;&lt;td&gt;986503 (-88%)&lt;&#x2F;td&gt;&lt;td&gt;0&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;&lt;a href=&quot;https:&#x2F;&#x2F;vova.im&#x2F;go&#x2F;just&quot;&gt;just&lt;&#x2F;a&gt; 0.1.5 v8 9.1.269.39&lt;&#x2F;td&gt;&lt;td&gt;8574888&lt;&#x2F;td&gt;&lt;td&gt;8398049&lt;&#x2F;td&gt;&lt;td&gt;8391783&lt;&#x2F;td&gt;&lt;td&gt;7848636&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;&lt;a href=&quot;https:&#x2F;&#x2F;vova.im&#x2F;go&#x2F;node&quot;&gt;node&lt;&#x2F;a&gt; 16.3.0 v8 9.0.257.25-node.16&lt;&#x2F;td&gt;&lt;td&gt;10474212 (+22%)&lt;&#x2F;td&gt;&lt;td&gt;10359501 (+23%)&lt;&#x2F;td&gt;&lt;td&gt;10270786 (+22%)&lt;&#x2F;td&gt;&lt;td&gt;9679039 (+23%)&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;&lt;a href=&quot;https:&#x2F;&#x2F;vova.im&#x2F;go&#x2F;node&quot;&gt;node&lt;&#x2F;a&gt; 17.1.0 v8 9.5.172.25-node.13&lt;&#x2F;td&gt;&lt;td&gt;10866964 (+26%)&lt;&#x2F;td&gt;&lt;td&gt;9338723 (+11%)&lt;&#x2F;td&gt;&lt;td&gt;10670077 (+27%)&lt;&#x2F;td&gt;&lt;td&gt;8728738 (+11%)&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;&lt;a href=&quot;https:&#x2F;&#x2F;vova.im&#x2F;go&#x2F;starlight&quot;&gt;starlight&lt;&#x2F;a&gt; 0.1.0&lt;&#x2F;td&gt;&lt;td&gt;1031608 (-87%)&lt;&#x2F;td&gt;&lt;td&gt;1019201 (-87%)&lt;&#x2F;td&gt;&lt;td&gt;986503 (-88%)&lt;&#x2F;td&gt;&lt;td&gt;0&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
 &lt;&#x2F;tbody&gt;&lt;&#x2F;table&gt;
 &lt;p&gt;&lt;a href=&quot;&#x2F;st&#x2F;21&#x2F;11&#x2F;23&#x2F;just-node-and-starlight-kv-performance&#x2F;test.js&quot;&gt;test.js&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
 &lt;p&gt;&lt;a href=&quot;&#x2F;st&#x2F;21&#x2F;11&#x2F;23&#x2F;just-node-and-starlight-kv-performance&#x2F;test_starlight.js&quot;&gt;test_starlight.js&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;

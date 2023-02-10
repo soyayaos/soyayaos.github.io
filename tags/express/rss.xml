@@ -33,8 +33,8 @@
 &lt;&#x2F;ul&gt;
 &lt;h3 id=&quot;metody-express-js&quot;&gt;Методы express.js&lt;&#x2F;h3&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;http:&#x2F;&#x2F;expressjs.com&#x2F;en&#x2F;api.html#res.end&quot;&gt;.end()&lt;&#x2F;a&gt; - завершает обработку запроса&lt;&#x2F;li&gt;
-&lt;li&gt;&lt;a href=&quot;http:&#x2F;&#x2F;expressjs.com&#x2F;en&#x2F;api.html#res.send&quot;&gt;.send()&lt;&#x2F;a&gt; - добавляет данные в ответ&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;vova.im&#x2F;go&#x2F;express-end&quot;&gt;.end()&lt;&#x2F;a&gt; - завершает обработку запроса&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;vova.im&#x2F;go&#x2F;express-send&quot;&gt;.send()&lt;&#x2F;a&gt; - добавляет данные в ответ&lt;&#x2F;li&gt;
 &lt;&#x2F;ul&gt;
 &lt;h3 id=&quot;otpravliaemye-zagolovki-dlia-end-i-send&quot;&gt;Отправляемые заголовки для end() и send()&lt;&#x2F;h3&gt;
 &lt;ul&gt;

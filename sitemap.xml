@@ -63,6 +63,10 @@
         <lastmod>2022-02-17</lastmod>
     </url>
     <url>
+        <loc>https://vova.im/linux/23/02/10/processing-csv-with-csvkit/</loc>
+        <lastmod>2023-02-10</lastmod>
+    </url>
+    <url>
         <loc>https://vova.im/postgresql/22/11/20/uuid-vs-bigint-speed-comparison/</loc>
         <lastmod>2022-11-20</lastmod>
     </url>
@@ -80,6 +84,12 @@
     </url>
     <url>
         <loc>https://vova.im/tags/bash/page/1/</loc>
+    </url>
+    <url>
+        <loc>https://vova.im/tags/csv/</loc>
+    </url>
+    <url>
+        <loc>https://vova.im/tags/csv/page/1/</loc>
     </url>
     <url>
         <loc>https://vova.im/tags/dig/</loc>
