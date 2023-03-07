@@ -67,6 +67,10 @@
         <lastmod>2023-02-10</lastmod>
     </url>
     <url>
+        <loc>https://vova.im/linux/23/03/07/downloading-gzipped-version-of-file-with-wget/</loc>
+        <lastmod>2023-03-07</lastmod>
+    </url>
+    <url>
         <loc>https://vova.im/postgresql/22/11/20/uuid-vs-bigint-speed-comparison/</loc>
         <lastmod>2022-11-20</lastmod>
     </url>
@@ -168,6 +172,12 @@
     </url>
     <url>
         <loc>https://vova.im/tags/uuid/page/1/</loc>
+    </url>
+    <url>
+        <loc>https://vova.im/tags/wget/</loc>
+    </url>
+    <url>
+        <loc>https://vova.im/tags/wget/page/1/</loc>
     </url>
     <url>
         <loc>https://vova.im/tags/windows/</loc>
