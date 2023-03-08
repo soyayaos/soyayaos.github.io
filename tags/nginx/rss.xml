@@ -7,7 +7,43 @@
         <generator>Zola</generator>
         <language>ru</language>
         <atom:link href="https://vova.im/tags/nginx/rss.xml" rel="self" type="application/rss+xml"/>
-        <lastBuildDate>Thu, 17 Feb 2022 00:00:00 +0000</lastBuildDate>
+        <lastBuildDate>Wed, 08 Mar 2023 00:00:00 +0000</lastBuildDate>
+        <item>
+            <title>Saving request headers into log in nginx</title>
+            <pubDate>Wed, 08 Mar 2023 00:00:00 +0000</pubDate>
+            <link>https://vova.im/linux/23/03/08/saving-request-headers-into-log-in-nginx/</link>
+            <guid>https://vova.im/linux/23/03/08/saving-request-headers-into-log-in-nginx/</guid>
+            <description>&lt;p&gt;Create &lt;code&gt;&#x2F;etc&#x2F;nginx&#x2F;utils.js&lt;&#x2F;code&gt; with necessary functions:&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;&quot;&gt;
+&lt;code class=&quot;language-js&quot; data-lang=&quot;js&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;const &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;headersAsJson &lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;= (&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;req&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;) &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;=&amp;gt; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;{
+    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;return &lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;JSON.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;stringify&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;req&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;headersIn&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;)
+}
+
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;export default &lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;{
+    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;headersAsJson
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Update &lt;code&gt;nginx.conf&lt;&#x2F;code&gt;:&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;&quot;&gt;
+&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;...
+http {
+    ...
+    js_import utils.js;
+    js_set $headers_as_json utils.headersAsJson;
+    ...
+    log_format main_with_headers &amp;quot;$request_id\t...\t$headers_as_json&amp;quot;;
+    ...
+}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;And apply this format to server:&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;&quot;&gt;
+&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;server {
+    ...
+    access_log &#x2F;path&#x2F;to&#x2F;access.log main_with_headers;
+    ...
+}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;</description>
+        </item>
         <item>
             <title>Проверка Google reCAPTCHA в Nginx с использованием njs</title>
             <pubDate>Thu, 17 Feb 2022 00:00:00 +0000</pubDate>

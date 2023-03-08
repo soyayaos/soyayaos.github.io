@@ -71,6 +71,10 @@
         <lastmod>2023-03-07</lastmod>
     </url>
     <url>
+        <loc>https://vova.im/linux/23/03/08/saving-request-headers-into-log-in-nginx/</loc>
+        <lastmod>2023-03-08</lastmod>
+    </url>
+    <url>
         <loc>https://vova.im/postgresql/22/11/20/uuid-vs-bigint-speed-comparison/</loc>
         <lastmod>2022-11-20</lastmod>
     </url>
@@ -112,6 +116,12 @@
     </url>
     <url>
         <loc>https://vova.im/tags/html/page/1/</loc>
+    </url>
+    <url>
+        <loc>https://vova.im/tags/js/</loc>
+    </url>
+    <url>
+        <loc>https://vova.im/tags/js/page/1/</loc>
     </url>
     <url>
         <loc>https://vova.im/tags/just/</loc>

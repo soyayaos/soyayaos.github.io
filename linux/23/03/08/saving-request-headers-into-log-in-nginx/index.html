@@ -34,8 +34,8 @@
 
   <title>
     
-    Morkovkin&#x27;s notes
-    
+Morkovkin&#x27;s notes | Saving request headers into log in nginx
+
   </title>
 
 <!--  <script crossorigin="anonymous" src="https://kit.fontawesome.com/201b8d5e05.js"></script>-->
@@ -107,85 +107,128 @@
   
 
   
-<header class='hero'>
-  <div class='hero-body pb-0'>
-    <div class='container'>
-      <div class="content">
-        <h1 class='title has-text-centered is-1'></h1>
-        <p class='subtitle has-text-centered'></p>
-        
-        <figure class="image is-flex is-justify-content-center is-align-items-center">
-          <img class="is-rounded" src='/st/photo.jpg' style="max-width: 192px" />
-        </figure>
-        
-        
-  <p class="has-text-centered">
+  
+
+  
+<section class="section">
+  <div class="container">
+    <div class="columns">
+      <div class="column is-10 is-offset-1">
+        <article class="box">
+          <h1 class="title is-1">
+            Saving request headers into log in nginx
+          </h1>
+          <p class="subtitle"></p>
+          <div class="columns is-multiline is-gapless">
+            <div class="column is-8">
+              
+  <p class="has-text-grey">
+<!--    <span class="icon">-->
+<!--      <i class="fas fa-user"></i>-->
+<!--    </span>-->
+<!--    Vovka Morkovkin -->
+    опубликовано
+    <span class="icon">
+      <i class="far fa-calendar-alt"></i>
+    </span>
+<!--    %B %d, %Y-->
+    <time datetime='2023-03-08'>2023-03-08</time>
+  </p>
+
+            </div>
+            <div class="column is-4 has-text-right-desktop">
+              
+<!--  <p class="has-text-grey">-->
+<!--    <span class="icon">-->
+<!--      <i class="far fa-clock"></i>-->
+<!--    </span>-->
+<!--    1 min,-->
+<!--    <span class="icon">-->
+<!--      <i class="fas fa-pencil-alt"></i>-->
+<!--    </span>-->
+<!--    45 words-->
+<!--  </p>-->
+
+            </div>
+            <div class="column">
+              
+              
+<!--  <p>-->
+<!--    <span class="has-text-black has-text-weight-normal">Разделы:</span>-->
+<!--    -->
+<!--      <a class="link has-text-weight-light" href='https:&#x2F;&#x2F;vova.im&#x2F;categories&#x2F;linux&#x2F;'>-->
+<!--        <span class="icon is-small">-->
+<!--          <i class="fas fa-folder fa-xs"></i>-->
+<!--        </span>-->
+<!--        linux-->
+<!--      </a>-->
+<!--    -->
+<!--  </p>-->
+
+              
+            </div>
+            <div class="column has-text-right-desktop">
+              
+              
+  <p>
+    <span class="has-text-black has-text-weight-normal">Тэги:</span>
     
-    
-      <a class="link" href="https://twitter.com/soyayaos" target="_blank">
-        <span class="icon is-medium">
-          <i class="fab fa-twitter fa-lg"></i>
+      <a class="link has-text-weight-light" href='https:&#x2F;&#x2F;vova.im&#x2F;tags&#x2F;nginx&#x2F;'>
+        <span class="icon is-small">
+          <i class="fas fa-tag fa-xs"></i>
         </span>
+        nginx
       </a>
     
-    
-      <a class="link" href="https://www.linkedin.com/in/soyayaos" target="_blank">
-        <span class="icon is-medium">
-          <i class="fab fa-linkedin fa-lg"></i>
+      <a class="link has-text-weight-light" href='https:&#x2F;&#x2F;vova.im&#x2F;tags&#x2F;js&#x2F;'>
+        <span class="icon is-small">
+          <i class="fas fa-tag fa-xs"></i>
         </span>
-      </a>
-    
-    
-      <a class="link" href="https://github.com/soyayaos" target="_blank">
-        <span class="icon is-medium">
-          <i class="fab fa-github fa-lg"></i>
-        </span>
-      </a>
-    
-    
-    
-    
-    
-    <a class="link" href="mailto:soyayaos@gmail.com" target="_blank">
-      <span class="icon is-medium">
-        <i class="far fa-envelope fa-lg"></i>
-      </span>
-    </a>
-    
-    
-      <a class="link" href='https:&#x2F;&#x2F;vova.im/rss.xml' target="_blank">
-        <span class="icon is-medium">
-          <i class="fas fa-rss fa-lg"></i>
-        </span>
+        js
       </a>
     
   </p>
 
+              
+            </div>
+          </div>
+          <div class="content mt-2">
+            <p>Create <code>/etc/nginx/utils.js</code> with necessary functions:</p>
+<pre style="background-color:#2b303b;">
+<code class="language-js" data-lang="js"><span style="color:#b48ead;">const </span><span style="color:#8fa1b3;">headersAsJson </span><span style="color:#c0c5ce;">= (</span><span style="color:#bf616a;">req</span><span style="color:#c0c5ce;">) </span><span style="color:#b48ead;">=&gt; </span><span style="color:#c0c5ce;">{
+    </span><span style="color:#b48ead;">return </span><span style="color:#c0c5ce;">JSON.</span><span style="color:#96b5b4;">stringify</span><span style="color:#c0c5ce;">(</span><span style="color:#bf616a;">req</span><span style="color:#c0c5ce;">.</span><span style="color:#bf616a;">headersIn</span><span style="color:#c0c5ce;">)
+}
+
+</span><span style="color:#b48ead;">export default </span><span style="color:#c0c5ce;">{
+    </span><span style="color:#bf616a;">headersAsJson
+</span><span style="color:#c0c5ce;">}
+</span></code></pre>
+<p>Update <code>nginx.conf</code>:</p>
+<pre style="background-color:#2b303b;">
+<code class="language-text" data-lang="text"><span style="color:#c0c5ce;">...
+http {
+    ...
+    js_import utils.js;
+    js_set $headers_as_json utils.headersAsJson;
+    ...
+    log_format main_with_headers &quot;$request_id\t...\t$headers_as_json&quot;;
+    ...
+}
+</span></code></pre>
+<p>And apply this format to server:</p>
+<pre style="background-color:#2b303b;">
+<code class="language-text" data-lang="text"><span style="color:#c0c5ce;">server {
+    ...
+    access_log /path/to/access.log main_with_headers;
+    ...
+}
+</span></code></pre>
+          </div>
+        </article>
       </div>
+      
     </div>
   </div>
-</header>
-
-
-  
-<section class='section'>
-    <div class='container'>
-      <div class="content">
-        <p><a href="/linux/23/03/08/saving-request-headers-into-log-in-nginx/">Saving request headers into log in <code>nginx</code></a></p>
-<p><a href="/linux/23/03/07/downloading-gzipped-version-of-file-with-wget/">Downloading <code>gzipped</code> version of file with <code>wget</code></a></p>
-<p><a href="/linux/23/02/10/processing-csv-with-csvkit/">Processing CSV with <code>csvkit</code></a></p>
-<p><a href="/postgresql/22/11/20/uuid-vs-bigint-speed-comparison/">UUID vs BIGINT speed comparison in <code>PostgreSQL</code></a></p>
-<p><a href="/css/22/11/19/click-emulation-with-html-and-css/">Click emulation with HTML and CSS</a></p>
-<p><a href="/linux/22/02/17/nginx-and-google-recaptcha/">Проверка Google reCAPTCHA в <code>nginx</code> с использованием <code>njs</code></a></p>
-<p><a href="/linux/21/11/30/upx-magic/">Использование upx для уменьшения размера выполняемого файла</a></p>
-<p><a href="/linux/21/11/29/actix-in-windows/">Сборка <code>actix</code> для <code>Windows</code></a></p>
-<p><a href="/linux/21/11/24/wrk-wrapper/">Обёртка для <code>wrk</code></a></p>
-<p><a href="/js/21/11/24/express-js-handler-types/">Влияние типа хэндлера на обработку запросов в <code>express.js</code></a></p>
-<p><a href="/linux/21/11/24/postfix-vs-crooked-hands/"><code>Postfix</code> vs <code>Helo command rejected: Host not found</code></a></p>
-<p><a href="/js/21/11/23/just-node-and-starlight-kv-performance/">Производительность чтения по ключу в <code>just</code>, <code>node</code> и <code>starlight</code></a></p>
-
-      </div>
-    </div>
 </section>
 
 
@@ -211,11 +254,12 @@
 
 
   
-  
-  
+
+
 
   
-  
+
+
 
   
   <footer class="py-4 has-background-light">
@@ -250,7 +294,10 @@
   <script src="/js/site.js"></script>
 
   
-  
+
+
+
+
 </body>
 
 </html>
