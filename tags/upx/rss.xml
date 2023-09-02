@@ -2,17 +2,17 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
       <title>Morkovkin&#x27;s notes - upx</title>
-        <link>https://vova.im</link>
+        <link>https://soyayaos.github.com</link>
         <description></description>
         <generator>Zola</generator>
         <language>ru</language>
-        <atom:link href="https://vova.im/tags/upx/rss.xml" rel="self" type="application/rss+xml"/>
+        <atom:link href="https://soyayaos.github.com/tags/upx/rss.xml" rel="self" type="application/rss+xml"/>
         <lastBuildDate>Tue, 30 Nov 2021 00:00:00 +0000</lastBuildDate>
         <item>
             <title>Использование upx для уменьшения размера выполняемого файла</title>
             <pubDate>Tue, 30 Nov 2021 00:00:00 +0000</pubDate>
-            <link>https://vova.im/linux/21/11/30/upx-magic/</link>
-            <guid>https://vova.im/linux/21/11/30/upx-magic/</guid>
+            <link>https://soyayaos.github.com/linux/21/11/30/upx-magic/</link>
+            <guid>https://soyayaos.github.com/linux/21/11/30/upx-magic/</guid>
             <description>&lt;pre style=&quot;background-color:#2b303b;&quot;&gt;
 &lt;code class=&quot;language-rust&quot; data-lang=&quot;rust&quot;&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; src&#x2F;main.rs
 

@@ -2,17 +2,17 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
       <title>Morkovkin&#x27;s notes - wget</title>
-        <link>https://vova.im</link>
+        <link>https://soyayaos.github.com</link>
         <description></description>
         <generator>Zola</generator>
         <language>ru</language>
-        <atom:link href="https://vova.im/tags/wget/rss.xml" rel="self" type="application/rss+xml"/>
+        <atom:link href="https://soyayaos.github.com/tags/wget/rss.xml" rel="self" type="application/rss+xml"/>
         <lastBuildDate>Tue, 07 Mar 2023 00:00:00 +0000</lastBuildDate>
         <item>
             <title>Downloading gzipped version of file with wget</title>
             <pubDate>Tue, 07 Mar 2023 00:00:00 +0000</pubDate>
-            <link>https://vova.im/linux/23/03/07/downloading-gzipped-version-of-file-with-wget/</link>
-            <guid>https://vova.im/linux/23/03/07/downloading-gzipped-version-of-file-with-wget/</guid>
+            <link>https://soyayaos.github.com/linux/23/03/07/downloading-gzipped-version-of-file-with-wget/</link>
+            <guid>https://soyayaos.github.com/linux/23/03/07/downloading-gzipped-version-of-file-with-wget/</guid>
             <description>&lt;pre style=&quot;background-color:#2b303b;&quot;&gt;
 &lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;$ wget --header=&amp;#39;Accept-Encoding: gzip&amp;#39; example.com&#x2F;file.xml -O file.xml.gz
 &lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;</description>

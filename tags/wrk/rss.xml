@@ -2,17 +2,17 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
       <title>Morkovkin&#x27;s notes - wrk</title>
-        <link>https://vova.im</link>
+        <link>https://soyayaos.github.com</link>
         <description></description>
         <generator>Zola</generator>
         <language>ru</language>
-        <atom:link href="https://vova.im/tags/wrk/rss.xml" rel="self" type="application/rss+xml"/>
+        <atom:link href="https://soyayaos.github.com/tags/wrk/rss.xml" rel="self" type="application/rss+xml"/>
         <lastBuildDate>Wed, 24 Nov 2021 00:00:00 +0000</lastBuildDate>
         <item>
             <title>Обёртка для wrk</title>
             <pubDate>Wed, 24 Nov 2021 00:00:00 +0000</pubDate>
-            <link>https://vova.im/linux/21/11/24/wrk-wrapper/</link>
-            <guid>https://vova.im/linux/21/11/24/wrk-wrapper/</guid>
+            <link>https://soyayaos.github.com/linux/21/11/24/wrk-wrapper/</link>
+            <guid>https://soyayaos.github.com/linux/21/11/24/wrk-wrapper/</guid>
             <description>&lt;pre style=&quot;background-color:#2b303b;&quot;&gt;
 &lt;code&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;#!&#x2F;bin&#x2F;bash
 

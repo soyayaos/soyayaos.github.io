@@ -2,17 +2,17 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
       <title>Morkovkin&#x27;s notes - nginx</title>
-        <link>https://vova.im</link>
+        <link>https://soyayaos.github.com</link>
         <description></description>
         <generator>Zola</generator>
         <language>ru</language>
-        <atom:link href="https://vova.im/tags/nginx/rss.xml" rel="self" type="application/rss+xml"/>
+        <atom:link href="https://soyayaos.github.com/tags/nginx/rss.xml" rel="self" type="application/rss+xml"/>
         <lastBuildDate>Wed, 08 Mar 2023 00:00:00 +0000</lastBuildDate>
         <item>
             <title>Saving request headers into log in nginx</title>
             <pubDate>Wed, 08 Mar 2023 00:00:00 +0000</pubDate>
-            <link>https://vova.im/linux/23/03/08/saving-request-headers-into-log-in-nginx/</link>
-            <guid>https://vova.im/linux/23/03/08/saving-request-headers-into-log-in-nginx/</guid>
+            <link>https://soyayaos.github.com/linux/23/03/08/saving-request-headers-into-log-in-nginx/</link>
+            <guid>https://soyayaos.github.com/linux/23/03/08/saving-request-headers-into-log-in-nginx/</guid>
             <description>&lt;p&gt;Create &lt;code&gt;&#x2F;etc&#x2F;nginx&#x2F;utils.js&lt;&#x2F;code&gt; with necessary functions:&lt;&#x2F;p&gt;
 &lt;pre style=&quot;background-color:#2b303b;&quot;&gt;
 &lt;code class=&quot;language-js&quot; data-lang=&quot;js&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;const &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;headersAsJson &lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;= (&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;req&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;) &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;=&amp;gt; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;{
@@ -47,8 +47,8 @@ http {
         <item>
             <title>Проверка Google reCAPTCHA в Nginx с использованием njs</title>
             <pubDate>Thu, 17 Feb 2022 00:00:00 +0000</pubDate>
-            <link>https://vova.im/linux/22/02/17/nginx-and-google-recaptcha/</link>
-            <guid>https://vova.im/linux/22/02/17/nginx-and-google-recaptcha/</guid>
+            <link>https://soyayaos.github.com/linux/22/02/17/nginx-and-google-recaptcha/</link>
+            <guid>https://soyayaos.github.com/linux/22/02/17/nginx-and-google-recaptcha/</guid>
             <description>&lt;p&gt;server.conf:&lt;&#x2F;p&gt;
 &lt;pre style=&quot;background-color:#2b303b;&quot;&gt;
 &lt;code class=&quot;language-nginx&quot; data-lang=&quot;nginx&quot;&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;js_import recaptcha from &#x2F;path&#x2F;to&#x2F;recaptcha.js;

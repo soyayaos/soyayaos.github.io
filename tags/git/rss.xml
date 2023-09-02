@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+      <title>Morkovkin&#x27;s notes - git</title>
+        <link>https://soyayaos.github.com</link>
+        <description></description>
+        <generator>Zola</generator>
+        <language>ru</language>
+        <atom:link href="https://soyayaos.github.com/tags/git/rss.xml" rel="self" type="application/rss+xml"/>
+        <lastBuildDate>Sat, 02 Sep 2023 00:00:00 +0000</lastBuildDate>
+        <item>
+            <title>Git-only user</title>
+            <pubDate>Sat, 02 Sep 2023 00:00:00 +0000</pubDate>
+            <link>https://soyayaos.github.com/linux/23/09/02/git-only-user/</link>
+            <guid>https://soyayaos.github.com/linux/23/09/02/git-only-user/</guid>
+            <description>&lt;p&gt;Just change user shell to &lt;code&gt;&#x2F;usr&#x2F;bin&#x2F;git-shell&lt;&#x2F;code&gt;&lt;&#x2F;p&gt;
+</description>
+        </item>
+    </channel>
+</rss>

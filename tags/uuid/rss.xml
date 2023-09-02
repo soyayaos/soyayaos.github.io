@@ -2,17 +2,17 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
       <title>Morkovkin&#x27;s notes - uuid</title>
-        <link>https://vova.im</link>
+        <link>https://soyayaos.github.com</link>
         <description></description>
         <generator>Zola</generator>
         <language>ru</language>
-        <atom:link href="https://vova.im/tags/uuid/rss.xml" rel="self" type="application/rss+xml"/>
+        <atom:link href="https://soyayaos.github.com/tags/uuid/rss.xml" rel="self" type="application/rss+xml"/>
         <lastBuildDate>Sun, 20 Nov 2022 00:00:00 +0000</lastBuildDate>
         <item>
             <title>UUID vs BIGINT speed comparison in PostgreSQL</title>
             <pubDate>Sun, 20 Nov 2022 00:00:00 +0000</pubDate>
-            <link>https://vova.im/postgresql/22/11/20/uuid-vs-bigint-speed-comparison/</link>
-            <guid>https://vova.im/postgresql/22/11/20/uuid-vs-bigint-speed-comparison/</guid>
+            <link>https://soyayaos.github.com/postgresql/22/11/20/uuid-vs-bigint-speed-comparison/</link>
+            <guid>https://soyayaos.github.com/postgresql/22/11/20/uuid-vs-bigint-speed-comparison/</guid>
             <description>&lt;h2 id=&quot;percentage-result&quot;&gt;Percentage result&lt;&#x2F;h2&gt;
 &lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;PG&lt;&#x2F;th&gt;&lt;th&gt;gen_random_uuid()&lt;&#x2F;th&gt;&lt;th&gt;uuid_generate_v1()&lt;&#x2F;th&gt;&lt;th&gt;uuid_generate_v4()&lt;&#x2F;th&gt;&lt;th&gt;nextval()&lt;&#x2F;th&gt;&lt;&#x2F;tr&gt;&lt;&#x2F;thead&gt;&lt;tbody&gt;
 &lt;tr&gt;&lt;td&gt;14.6&lt;&#x2F;td&gt;&lt;td&gt;100&lt;&#x2F;td&gt;&lt;td&gt;296&lt;&#x2F;td&gt;&lt;td&gt;212&lt;&#x2F;td&gt;&lt;td&gt;28&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;

@@ -2,17 +2,25 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
       <title>Morkovkin&#x27;s notes</title>
-        <link>https://vova.im</link>
+        <link>https://soyayaos.github.com</link>
         <description></description>
         <generator>Zola</generator>
         <language>ru</language>
-        <atom:link href="https://vova.im/rss.xml" rel="self" type="application/rss+xml"/>
-        <lastBuildDate>Wed, 08 Mar 2023 00:00:00 +0000</lastBuildDate>
+        <atom:link href="https://soyayaos.github.com/rss.xml" rel="self" type="application/rss+xml"/>
+        <lastBuildDate>Sat, 02 Sep 2023 00:00:00 +0000</lastBuildDate>
+        <item>
+            <title>Git-only user</title>
+            <pubDate>Sat, 02 Sep 2023 00:00:00 +0000</pubDate>
+            <link>https://soyayaos.github.com/linux/23/09/02/git-only-user/</link>
+            <guid>https://soyayaos.github.com/linux/23/09/02/git-only-user/</guid>
+            <description>&lt;p&gt;Just change user shell to &lt;code&gt;&#x2F;usr&#x2F;bin&#x2F;git-shell&lt;&#x2F;code&gt;&lt;&#x2F;p&gt;
+</description>
+        </item>
         <item>
             <title>Saving request headers into log in nginx</title>
             <pubDate>Wed, 08 Mar 2023 00:00:00 +0000</pubDate>
-            <link>https://vova.im/linux/23/03/08/saving-request-headers-into-log-in-nginx/</link>
-            <guid>https://vova.im/linux/23/03/08/saving-request-headers-into-log-in-nginx/</guid>
+            <link>https://soyayaos.github.com/linux/23/03/08/saving-request-headers-into-log-in-nginx/</link>
+            <guid>https://soyayaos.github.com/linux/23/03/08/saving-request-headers-into-log-in-nginx/</guid>
             <description>&lt;p&gt;Create &lt;code&gt;&#x2F;etc&#x2F;nginx&#x2F;utils.js&lt;&#x2F;code&gt; with necessary functions:&lt;&#x2F;p&gt;
 &lt;pre style=&quot;background-color:#2b303b;&quot;&gt;
 &lt;code class=&quot;language-js&quot; data-lang=&quot;js&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;const &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;headersAsJson &lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;= (&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;req&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;) &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;=&amp;gt; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;{
@@ -47,8 +55,8 @@ http {
         <item>
             <title>Downloading gzipped version of file with wget</title>
             <pubDate>Tue, 07 Mar 2023 00:00:00 +0000</pubDate>
-            <link>https://vova.im/linux/23/03/07/downloading-gzipped-version-of-file-with-wget/</link>
-            <guid>https://vova.im/linux/23/03/07/downloading-gzipped-version-of-file-with-wget/</guid>
+            <link>https://soyayaos.github.com/linux/23/03/07/downloading-gzipped-version-of-file-with-wget/</link>
+            <guid>https://soyayaos.github.com/linux/23/03/07/downloading-gzipped-version-of-file-with-wget/</guid>
             <description>&lt;pre style=&quot;background-color:#2b303b;&quot;&gt;
 &lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;$ wget --header=&amp;#39;Accept-Encoding: gzip&amp;#39; example.com&#x2F;file.xml -O file.xml.gz
 &lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;</description>
@@ -56,8 +64,8 @@ http {
         <item>
             <title>Processing CSV with csvkit</title>
             <pubDate>Fri, 10 Feb 2023 00:00:00 +0000</pubDate>
-            <link>https://vova.im/linux/23/02/10/processing-csv-with-csvkit/</link>
-            <guid>https://vova.im/linux/23/02/10/processing-csv-with-csvkit/</guid>
+            <link>https://soyayaos.github.com/linux/23/02/10/processing-csv-with-csvkit/</link>
+            <guid>https://soyayaos.github.com/linux/23/02/10/processing-csv-with-csvkit/</guid>
             <description>&lt;pre style=&quot;background-color:#2b303b;&quot;&gt;
 &lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;$ cat data.csv 
 name,amount
@@ -111,8 +119,8 @@ done
         <item>
             <title>UUID vs BIGINT speed comparison in PostgreSQL</title>
             <pubDate>Sun, 20 Nov 2022 00:00:00 +0000</pubDate>
-            <link>https://vova.im/postgresql/22/11/20/uuid-vs-bigint-speed-comparison/</link>
-            <guid>https://vova.im/postgresql/22/11/20/uuid-vs-bigint-speed-comparison/</guid>
+            <link>https://soyayaos.github.com/postgresql/22/11/20/uuid-vs-bigint-speed-comparison/</link>
+            <guid>https://soyayaos.github.com/postgresql/22/11/20/uuid-vs-bigint-speed-comparison/</guid>
             <description>&lt;h2 id=&quot;percentage-result&quot;&gt;Percentage result&lt;&#x2F;h2&gt;
 &lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;PG&lt;&#x2F;th&gt;&lt;th&gt;gen_random_uuid()&lt;&#x2F;th&gt;&lt;th&gt;uuid_generate_v1()&lt;&#x2F;th&gt;&lt;th&gt;uuid_generate_v4()&lt;&#x2F;th&gt;&lt;th&gt;nextval()&lt;&#x2F;th&gt;&lt;&#x2F;tr&gt;&lt;&#x2F;thead&gt;&lt;tbody&gt;
 &lt;tr&gt;&lt;td&gt;14.6&lt;&#x2F;td&gt;&lt;td&gt;100&lt;&#x2F;td&gt;&lt;td&gt;296&lt;&#x2F;td&gt;&lt;td&gt;212&lt;&#x2F;td&gt;&lt;td&gt;28&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
@@ -269,8 +277,8 @@ explain analyse
         <item>
             <title>Click emulation with HTML and CSS</title>
             <pubDate>Sat, 19 Nov 2022 00:00:00 +0000</pubDate>
-            <link>https://vova.im/css/22/11/19/click-emulation-with-html-and-css/</link>
-            <guid>https://vova.im/css/22/11/19/click-emulation-with-html-and-css/</guid>
+            <link>https://soyayaos.github.com/css/22/11/19/click-emulation-with-html-and-css/</link>
+            <guid>https://soyayaos.github.com/css/22/11/19/click-emulation-with-html-and-css/</guid>
             <description>&lt;pre style=&quot;background-color:#2b303b;&quot;&gt;
 &lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;input &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;id&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;=&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;test&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;&amp;quot; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;type&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;=&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;checkbox&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;&amp;quot;&amp;gt;
 &amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;div &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;class&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;=&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;menu&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;&amp;quot;&amp;gt;
@@ -329,8 +337,8 @@ explain analyse
         <item>
             <title>Проверка Google reCAPTCHA в Nginx с использованием njs</title>
             <pubDate>Thu, 17 Feb 2022 00:00:00 +0000</pubDate>
-            <link>https://vova.im/linux/22/02/17/nginx-and-google-recaptcha/</link>
-            <guid>https://vova.im/linux/22/02/17/nginx-and-google-recaptcha/</guid>
+            <link>https://soyayaos.github.com/linux/22/02/17/nginx-and-google-recaptcha/</link>
+            <guid>https://soyayaos.github.com/linux/22/02/17/nginx-and-google-recaptcha/</guid>
             <description>&lt;p&gt;server.conf:&lt;&#x2F;p&gt;
 &lt;pre style=&quot;background-color:#2b303b;&quot;&gt;
 &lt;code class=&quot;language-nginx&quot; data-lang=&quot;nginx&quot;&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;js_import recaptcha from &#x2F;path&#x2F;to&#x2F;recaptcha.js;
@@ -411,8 +419,8 @@ server {
         <item>
             <title>Использование upx для уменьшения размера выполняемого файла</title>
             <pubDate>Tue, 30 Nov 2021 00:00:00 +0000</pubDate>
-            <link>https://vova.im/linux/21/11/30/upx-magic/</link>
-            <guid>https://vova.im/linux/21/11/30/upx-magic/</guid>
+            <link>https://soyayaos.github.com/linux/21/11/30/upx-magic/</link>
+            <guid>https://soyayaos.github.com/linux/21/11/30/upx-magic/</guid>
             <description>&lt;pre style=&quot;background-color:#2b303b;&quot;&gt;
 &lt;code class=&quot;language-rust&quot; data-lang=&quot;rust&quot;&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; src&#x2F;main.rs
 
@@ -473,8 +481,8 @@ target&#x2F;release&#x2F;hello-world-min: ELF 64-bit LSB pie executable, x86-64,
         <item>
             <title>Сборка Actix для Windows</title>
             <pubDate>Mon, 29 Nov 2021 00:00:00 +0000</pubDate>
-            <link>https://vova.im/linux/21/11/29/actix-in-windows/</link>
-            <guid>https://vova.im/linux/21/11/29/actix-in-windows/</guid>
+            <link>https://soyayaos.github.com/linux/21/11/29/actix-in-windows/</link>
+            <guid>https://soyayaos.github.com/linux/21/11/29/actix-in-windows/</guid>
             <description>&lt;pre style=&quot;background-color:#2b303b;&quot;&gt;
 &lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;$ rustc --version
 rustc 1.59.0-nightly (db9d361a4 2021-11-28)
@@ -519,8 +527,8 @@ Hello world!
         <item>
             <title>Влияние типа хэндлера на обработку запросов в express.js</title>
             <pubDate>Wed, 24 Nov 2021 00:00:00 +0000</pubDate>
-            <link>https://vova.im/js/21/11/24/express-js-handler-types/</link>
-            <guid>https://vova.im/js/21/11/24/express-js-handler-types/</guid>
+            <link>https://soyayaos.github.com/js/21/11/24/express-js-handler-types/</link>
+            <guid>https://soyayaos.github.com/js/21/11/24/express-js-handler-types/</guid>
             <description>&lt;h3 id=&quot;rezul-taty-dlia-express-js-4-17-1&quot;&gt;Результаты для express.js 4.17.1&lt;&#x2F;h3&gt;
 &lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;cores &#x2F; fn type&lt;&#x2F;th&gt;&lt;th&gt;rps @ v16.3.0&lt;&#x2F;th&gt;&lt;th&gt;rps @ v17.1.0&lt;&#x2F;th&gt;&lt;&#x2F;tr&gt;&lt;&#x2F;thead&gt;&lt;tbody&gt;
 &lt;tr&gt;&lt;td&gt;12 &#x2F; normal&lt;&#x2F;td&gt;&lt;td&gt;15526&lt;&#x2F;td&gt;&lt;td&gt;16365&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
@@ -603,8 +611,8 @@ Keep-Alive: timeout=5
         <item>
             <title>Postfix vs &quot;Helo command rejected: Host not found&quot;</title>
             <pubDate>Wed, 24 Nov 2021 00:00:00 +0000</pubDate>
-            <link>https://vova.im/linux/21/11/24/postfix-vs-crooked-hands/</link>
-            <guid>https://vova.im/linux/21/11/24/postfix-vs-crooked-hands/</guid>
+            <link>https://soyayaos.github.com/linux/21/11/24/postfix-vs-crooked-hands/</link>
+            <guid>https://soyayaos.github.com/linux/21/11/24/postfix-vs-crooked-hands/</guid>
             <description>&lt;p&gt;Иногда бывает так:&lt;&#x2F;p&gt;
 &lt;pre style=&quot;background-color:#2b303b;&quot;&gt;
 &lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;$ cat mail.log
@@ -625,8 +633,8 @@ ns2.supa-trupa-ns.ru.
         <item>
             <title>Обёртка для wrk</title>
             <pubDate>Wed, 24 Nov 2021 00:00:00 +0000</pubDate>
-            <link>https://vova.im/linux/21/11/24/wrk-wrapper/</link>
-            <guid>https://vova.im/linux/21/11/24/wrk-wrapper/</guid>
+            <link>https://soyayaos.github.com/linux/21/11/24/wrk-wrapper/</link>
+            <guid>https://soyayaos.github.com/linux/21/11/24/wrk-wrapper/</guid>
             <description>&lt;pre style=&quot;background-color:#2b303b;&quot;&gt;
 &lt;code&gt;&lt;span style=&quot;color:#c0c5ce;&quot;&gt;#!&#x2F;bin&#x2F;bash
 
@@ -648,8 +656,8 @@ echo
         <item>
             <title>Производительность чтения по ключу в just, node и starlight</title>
             <pubDate>Tue, 23 Nov 2021 00:00:00 +0000</pubDate>
-            <link>https://vova.im/js/21/11/23/just-node-and-starlight-kv-performance/</link>
-            <guid>https://vova.im/js/21/11/23/just-node-and-starlight-kv-performance/</guid>
+            <link>https://soyayaos.github.com/js/21/11/23/just-node-and-starlight-kv-performance/</link>
+            <guid>https://soyayaos.github.com/js/21/11/23/just-node-and-starlight-kv-performance/</guid>
             <description>&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;engine&lt;&#x2F;th&gt;&lt;th&gt;Object&lt;&#x2F;th&gt;&lt;th&gt;Array&lt;&#x2F;th&gt;&lt;th&gt;Array with kv&lt;&#x2F;th&gt;&lt;th&gt;Map&lt;&#x2F;th&gt;&lt;&#x2F;tr&gt;&lt;&#x2F;thead&gt;&lt;tbody&gt;
 &lt;tr&gt;&lt;td&gt;&lt;a href=&quot;https:&#x2F;&#x2F;vova.im&#x2F;go&#x2F;just&quot;&gt;just&lt;&#x2F;a&gt; 0.1.5 v8 9.1.269.39&lt;&#x2F;td&gt;&lt;td&gt;8574888&lt;&#x2F;td&gt;&lt;td&gt;8398049&lt;&#x2F;td&gt;&lt;td&gt;8391783&lt;&#x2F;td&gt;&lt;td&gt;7848636&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
 &lt;tr&gt;&lt;td&gt;&lt;a href=&quot;https:&#x2F;&#x2F;vova.im&#x2F;go&#x2F;node&quot;&gt;node&lt;&#x2F;a&gt; 16.3.0 v8 9.0.257.25-node.16&lt;&#x2F;td&gt;&lt;td&gt;10474212 (+22%)&lt;&#x2F;td&gt;&lt;td&gt;10359501 (+23%)&lt;&#x2F;td&gt;&lt;td&gt;10270786 (+22%)&lt;&#x2F;td&gt;&lt;td&gt;9679039 (+23%)&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
